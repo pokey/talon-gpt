@@ -33,7 +33,7 @@ class Actions:
         actions.user.run_rpc_command(
             "editor.action.codeAction",
             {
-                "kind": "refactor.rewrite",
+                "kind": "refactor.rewrite.copilot",
             },
         )
         has_content = copilot_slash_command or prose
@@ -53,6 +53,13 @@ class Actions:
             actions.sleep("50ms")
             actions.insert(prose)
             actions.key("enter")
+
+    def copilot_edit(prose: str):
+        """Initiate copilot edit session"""
+        actions.user.vscode("workbench.action.chat.openEditSession")
+        if prose:
+            actions.sleep("50ms")
+            actions.insert(prose)
 
     def copilot_focus_code_block(index: int):
         """Bring a copilot chat suggestion to the cursor"""
