@@ -56,7 +56,7 @@ class Actions:
 
     def copilot_edit(prose: str):
         """Initiate copilot edit session"""
-        actions.user.vscode("workbench.action.chat.openEditSession")
+        actions.user.vscode("workbench.action.chat.openAgent")
         if prose:
             actions.sleep("50ms")
             actions.insert(prose)
